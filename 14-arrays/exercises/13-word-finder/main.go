@@ -8,6 +8,12 @@
 
 package main
 
+import (
+	"fmt"
+	"os"
+	"strings"
+)
+
 // ---------------------------------------------------------
 // EXERCISE: Word Finder
 //
@@ -54,4 +60,23 @@ package main
 const corpus = "lazy cat jumps again and again and again since the beginning this was very important"
 
 func main() {
+	args := os.Args[1:]
+	if len(args) < 1 {
+		fmt.Println("Provide at least one word")
+		return
+	}
+	basicWords := [...]string{"and", "or", "was", "the", "since", "very"}
+	words := strings.Fields
+mainLoop:
+	for _, v := range args {
+		for _, v2 := range basicWords {
+			if v == v2 {
+				continue mainLoop
+			}
+		}
+		idx := strings.Index(corpus, strings.ToLower(v))
+		if idx != -1 {
+			fmt.Printf("#%-3d: %q\n", idx, v)
+		}
+	}
 }

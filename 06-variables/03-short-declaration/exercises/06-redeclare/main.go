@@ -8,6 +8,11 @@
 
 package main
 
+import (
+	"fmt"
+	"reflect"
+)
+
 // ---------------------------------------------------------
 // EXERCISE: Redeclare
 //
@@ -32,4 +37,8 @@ func main() {
 	// THEN UNCOMMENT THE CODE BELOW
 
 	// fmt.Println(age, yourAge, ratio)
+	var age, yourAge float32 = 21., 35.0
+	yourAge, ratio := 36.0, age/yourAge
+	ratio1 := age / yourAge
+	fmt.Println(yourAge, age, reflect.TypeOf(ratio), reflect.TypeOf(ratio1), ratio1)
 }

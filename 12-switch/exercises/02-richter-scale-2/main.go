@@ -8,6 +8,12 @@
 
 package main
 
+import (
+	"fmt"
+	"os"
+	"strings"
+)
+
 // ---------------------------------------------------------
 // EXERCISE: Richter Scale #2
 //
@@ -67,4 +73,29 @@ package main
 // ---------------------------------------------------------
 
 func main() {
+	var desc string
+
+	if len(os.Args) < 2 {
+		fmt.Println("Please enter a richter description")
+		return
+	}
+
+	for i := 1; i < len(os.Args); i++ {
+		desc += os.Args[i]
+		desc += " "
+
+	}
+	desc = strings.Trim(desc, " ")
+
+	switch desc {
+
+	case "massive":
+		fmt.Printf("%s's richter scale is 10+\n", desc)
+	case "very big":
+		fmt.Printf("%s's richter scale is 5 to 10\n", desc)
+	case "small":
+		fmt.Printf("%s's richter scale is < 5\n", desc)
+	default:
+		fmt.Printf("%s is not a valid richter description\n", desc)
+	}
 }

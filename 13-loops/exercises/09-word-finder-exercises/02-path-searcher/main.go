@@ -8,6 +8,13 @@
 
 package main
 
+import (
+	"fmt"
+	"os"
+	"path/filepath"
+	"strings"
+)
+
 // ---------------------------------------------------------
 // EXERCISE: Path Searcher
 //
@@ -78,6 +85,21 @@ package main
 //    #1 : "/usr/local/bin"
 //    #2 : "/Users/inanc/go/bin"
 // ---------------------------------------------------------
+const errMsg = `Please enter a text to search the environment vairiable PATH for`
 
 func main() {
+	args := os.Args[1:]
+	if len(args) != 1 {
+		fmt.Println(errMsg)
+		return
+	}
+	x, _ := os.LookupEnv("PATH")
+	pathLst := filepath.SplitList(x)
+
+	for i, p := range pathLst {
+		if strings.Contains(strings.ToLower(p), strings.ToLower(args[0])) {
+			fmt.Printf("#%-1d: %s\n", i+1, p)
+		}
+	}
+
 }

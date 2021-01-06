@@ -11,5 +11,6 @@ package main
 import "fmt"
 
 func bye() {
-	fmt.Println("Bye!")
+	var bye string = "Bye!"
+	fmt.Println(bye)
 }

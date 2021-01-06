@@ -49,6 +49,8 @@ package main
 
 import (
 	"fmt"
+	"os"
+	"strconv"
 	"time"
 
 	"github.com/inancgumus/screen"
@@ -56,7 +58,9 @@ import (
 
 func main() {
 	screen.Clear()
-
+	args := os.Args[1:]
+	alarmTime, _ := strconv.Atoi(args[0])
+	counter := 0
 	for {
 		screen.MoveTopLeft()
 
@@ -84,5 +88,23 @@ func main() {
 		}
 
 		time.Sleep(time.Second)
+		counter++
+		if counter == alarmTime {
+			screen.Clear()
+			screen.MoveTopLeft()
+			for i := 0; i < 3; i++ {
+				for line := range alarm[0] {
+					for char := range alarm {
+						fmt.Print(alarm[char][line])
+					}
+					fmt.Print("\n")
+				}
+				time.Sleep(1 * time.Second)
+				screen.Clear()
+				time.Sleep(1 * time.Second)
+				screen.MoveTopLeft()
+			}
+			counter = 0
+		}
 	}
 }

@@ -27,8 +27,7 @@ func main() {
 	// Change the following data types to the correct
 	// data types where appropriate.
 	var (
-		width  uint8
-		height uint16
+		width, height uint16
 	)
 
 	// DONT TOUCH THIS:

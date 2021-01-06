@@ -8,6 +8,14 @@
 
 package main
 
+import (
+	"fmt"
+	"math/rand"
+	"os"
+	"strconv"
+	"time"
+)
+
 // ---------------------------------------------------------
 // EXERCISE: Dynamic Difficulty
 //
@@ -47,6 +55,34 @@ package main
 //  It will adjust its own difficulty depending on the
 //  guess number.
 // ---------------------------------------------------------
+const errMsg = `Please enter one positive integer`
 
 func main() {
+	rand.Seed(time.Now().UnixNano())
+	args := os.Args[1:]
+	if len(args) != 1 {
+		fmt.Println(errMsg)
+		return
+	}
+	var level int
+	num, err := strconv.Atoi(args[0])
+
+	if err != nil || num < 0 {
+		fmt.Println(errMsg)
+		return
+	}
+
+	level = num/5 + 5
+	fmt.Printf("You are playing at level %d\n", level)
+
+	for i := 0; i < level; i++ {
+		n := rand.Intn(num + 1)
+		fmt.Printf("%4d", n)
+		if n == num {
+			fmt.Println("\nYou win :)")
+			return
+		}
+	}
+	fmt.Println("\nYou lose :(")
+
 }

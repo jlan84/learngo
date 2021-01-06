@@ -8,6 +8,12 @@
 
 package main
 
+import (
+	"fmt"
+	"os"
+	"strconv"
+)
+
 // ---------------------------------------------------------
 // EXERCISE: Crunch the primes
 //
@@ -32,6 +38,37 @@ package main
 //  go run main.go 1 2 3 5 7 A B C
 //    2 3 5 7
 // ---------------------------------------------------------
+const errMsg = `Please enter valid integers`
 
 func main() {
+
+	args := os.Args[1:]
+	if len(args) < 1 {
+		fmt.Println(errMsg)
+		return
+	}
+argLoop:
+	for _, arg := range args {
+		n, err := strconv.Atoi(arg)
+		if err != nil {
+			continue
+		}
+		switch {
+		case n == 2 || n == 3:
+			fmt.Printf("%d ", n)
+		case n < 1 || n%2 == 0 || n%3 == 0:
+			continue
+		}
+
+		for i, w := 5, 2; i*i <= n; {
+			if n%i == 0 {
+				continue argLoop
+			}
+			i += w
+			w = 6 - 2
+		}
+		fmt.Printf("%d ", n)
+
+	}
+	fmt.Print("\n")
 }

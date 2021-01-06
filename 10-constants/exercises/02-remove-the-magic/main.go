@@ -8,7 +8,11 @@
 
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"os"
+	"strconv"
+)
 
 // ---------------------------------------------------------
 // EXERCISE: Remove the Magic
@@ -27,6 +31,13 @@ import "fmt"
 // ---------------------------------------------------------
 
 func main() {
+	const (
+		hoursInDay   = 24
+		daysInWeek   = 7
+		hoursPerWeek = hoursInDay * daysInWeek
+	)
+	weeks, _ := strconv.ParseInt(os.Args[1], 10, 64)
+	hours := hoursPerWeek * weeks
 	fmt.Printf("There are %d hours in %d weeks.\n",
-		24*7*5, 5)
+		hours, weeks)
 }

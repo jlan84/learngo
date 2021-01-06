@@ -60,20 +60,28 @@ import (
 
 func main() {
 	args := os.Args[1:]
-	if len(args) != 1 {
-		fmt.Println("[your name]")
+	if len(args) != 2 {
+		fmt.Println("[your name] [positive | negative]")
 		return
 	}
 
 	name := args[0]
+	sentiment := args[1]
 
-	moods := [...]string{
-		"happy 😀", "good 👍", "awesome 😎",
-		"sad 😞", "bad 👎", "terrible 😩",
+	moods := [2][3]string{
+		{"happy 😀", "good 👍", "awesome 😎"},
+		{"sad 😞", "bad 👎", "terrible 😩"},
 	}
 
 	rand.Seed(time.Now().UnixNano())
-	n := rand.Intn(len(moods))
 
-	fmt.Printf("%s feels %s\n", name, moods[n])
+	switch sentiment {
+	case "positive":
+		fmt.Printf("%s is feeling %s\n", name, moods[0][rand.Intn(len(moods[0]))])
+	case "negative":
+		fmt.Printf("%s is feeling %s\n", name, moods[1][rand.Intn(len(moods[1]))])
+	default:
+		fmt.Println("Please enter positive or negative after the your name")
+	}
+
 }

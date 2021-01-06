@@ -8,6 +8,13 @@
 
 package main
 
+import (
+	"fmt"
+	"os"
+	"strconv"
+	"strings"
+)
+
 // ---------------------------------------------------------
 // EXERCISE: Dynamic Table
 //
@@ -54,4 +61,39 @@ package main
 // ---------------------------------------------------------
 
 func main() {
+
+	if len(os.Args) != 2 {
+		fmt.Println("Please enter a number")
+		return
+	}
+
+	size, err := strconv.Atoi(os.Args[1])
+	if err != nil {
+		fmt.Printf("%q is not a valid number", os.Args[1])
+	}
+	fmt.Print("X")
+
+	for i := 0; i <= size; i++ {
+		fmt.Printf("%5d", i)
+	}
+
+	for i := 0; i <= size; i++ {
+
+		fmt.Print("\n")
+		fmt.Printf("%d", i)
+		for j := 0; j <= size; j++ {
+			fmt.Printf("%5d", j*i)
+		}
+
+	}
+	for i := 3; i >= 0; {
+		i--
+		fmt.Println(i)
+	}
+	var i int
+	s := strings.Fields("Hi Good day")
+	for range s {
+		i++
+	}
+	fmt.Println(i)
 }

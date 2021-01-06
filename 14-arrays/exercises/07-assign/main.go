@@ -8,6 +8,11 @@
 
 package main
 
+import (
+	"fmt"
+	"strings"
+)
+
 // ---------------------------------------------------------
 // EXERCISE: Assign the Arrays
 //
@@ -42,4 +47,19 @@ package main
 // ---------------------------------------------------------
 
 func main() {
+	books := [...]string{
+		"Cycle of Arawn", "Red Rising", "Golden Son",
+	}
+
+	upper := books
+	for i := range upper {
+		upper[i] = strings.ToUpper(upper[i])
+	}
+	var lower [3]string
+
+	for i, v := range books {
+		lower[i] = strings.ToLower(v)
+	}
+
+	fmt.Printf("books: %s\nupper: %s\nlower: %s\n", books, upper, lower)
 }

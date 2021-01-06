@@ -8,6 +8,8 @@
 
 package main
 
+import "fmt"
+
 // ---------------------------------------------------------
 // EXERCISE: Short With Expression
 //
@@ -25,4 +27,6 @@ func main() {
 
 	// THEN UNCOMMENT THE CODE BELOW
 	// fmt.Println(sum)
+	sum1 := 27.5 + 3.5
+	fmt.Println(sum1)
 }

@@ -51,8 +51,11 @@ func main() {
 	//
 	// Second argument: 10 means decimal number
 	// Third argument : 8 means 8-bits (int8)
-	val, _ := strconv.ParseInt(os.Args[1], 10, 8)
-
+	val1, _ := strconv.ParseInt(os.Args[1], 10, 8)
+	val2, _ := strconv.ParseInt(os.Args[2], 10, 16)
+	val3, _ := strconv.ParseInt(os.Args[3], 10, 32)
+	val4, _ := strconv.ParseInt(os.Args[4], 10, 64)
+	val5, _ := strconv.ParseInt(os.Args[5], 2, 8)
 	// Now the val variable is int64 because ParseInt
 	// returns an int64. But, since I passed 8 as its third
 	// argument, it returns int8 convertable value.
@@ -60,8 +63,13 @@ func main() {
 	// Try running the program with a value of -128 to 127
 	// Running it beyond that range will result in
 	// either -128 or 127.
-	fmt.Println("int8 value is:", int8(val))
 
+	fmt.Println("int8 value is:", val1)
+	fmt.Println("int16 value is:", val2)
+	fmt.Println("int32 value is:", val3)
+	fmt.Println("int64 value is:", val4)
+	fmt.Printf("The int value for %s is: %d\n", os.Args[5], val5)
+	fmt.Println("int64 value is:", val5)
 	// --------------------------------------
 	// NOW IT'S YOUR TURN!
 	// --------------------------------------

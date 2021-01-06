@@ -8,6 +8,13 @@
 
 package main
 
+import (
+	"fmt"
+	"os"
+	"strings"
+	"time"
+)
+
 // ---------------------------------------------------------
 // EXERCISE: Days in a Month
 //
@@ -88,4 +95,38 @@ package main
 // ---------------------------------------------------------
 
 func main() {
+	if len(os.Args) != 2 {
+		fmt.Println("Give me a month name")
+		return
+	}
+
+	arg1 := strings.ToLower(os.Args[1])
+	year := time.Now().Year()
+	leap := year%4 == 0 && year%100 != 0 || year%400 == 0
+	months31 := []string{"january", "march", "may", "july", "august", "october",
+		"december"}
+	months30 := []string{"april", "june", "september", "november"}
+
+	if _, found := Find(months31, arg1); found {
+		fmt.Printf("%q has 31 days\n", arg1)
+	} else if _, found = Find(months30, arg1); found {
+		fmt.Printf("%q has 30 days\n", arg1)
+	} else if arg1 == "february" && leap {
+		fmt.Printf("%q has 29 days\n", arg1)
+	} else if arg1 == "february" && !leap {
+		fmt.Printf("%q has 28 days\n", arg1)
+	} else {
+		fmt.Printf("%q is not a month\n", arg1)
+	}
+
+}
+
+// Find determines if the item is in the slice
+func Find(slice []string, val string) (int, bool) {
+	for i, item := range slice {
+		if item == val {
+			return i, true
+		}
+	}
+	return -1, false
 }

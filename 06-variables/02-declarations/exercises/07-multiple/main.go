@@ -27,8 +27,8 @@ package main
 // ---------------------------------------------------------
 
 func main() {
-	// var (
-	//   ?
-	// )
-	// fmt.Println(active, delta)
+	var (
+	  ?
+	)
+	fmt.Println(active, delta)
 }

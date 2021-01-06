@@ -8,6 +8,13 @@
 
 package main
 
+import (
+	"fmt"
+	"math/rand"
+	"os"
+	"time"
+)
+
 // ---------------------------------------------------------
 // EXERCISE: Moodly
 //
@@ -46,4 +53,19 @@ package main
 // ---------------------------------------------------------
 
 func main() {
+	args := os.Args[1:]
+	rand.Seed(time.Now().UnixNano())
+	s := "hello"
+	s = "goodbye"
+	fmt.Println(s)
+	if len(args) != 1 {
+		fmt.Println("Please enter one name to display a mood")
+		return
+	}
+	feelings := [...]string{" feels happy", " feels sad",
+		" feels positive", " feels negative",
+	}
+	feelings[0] = " feels sour"
+	i := rand.Intn(len(feelings))
+	fmt.Printf("%s%s\n", args[0], feelings[i])
 }

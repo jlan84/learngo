@@ -8,6 +8,12 @@
 
 package main
 
+import (
+	"fmt"
+	"os"
+	"strconv"
+)
+
 // ---------------------------------------------------------
 // EXERCISE: Math Tables
 //
@@ -105,4 +111,72 @@ package main
 // ---------------------------------------------------------
 
 func main() {
+	args := os.Args
+	if len(args) != 3 {
+		fmt.Println("Please provide an integer and an operator")
+		return
+	}
+	num, err := strconv.Atoi(args[2])
+	op := args[1]
+	fmt.Println(op)
+	if err != nil || num < 0 {
+		fmt.Println("This is not a valid integer")
+		return
+	}
+	fmt.Printf("%s", op)
+	for i := 0; i <= num; i++ {
+		fmt.Printf("%4d", i)
+	}
+	switch op {
+
+	case "*":
+		for i := 0; i <= num; i++ {
+			fmt.Printf("\n%d", i)
+			for j := 0; j <= num; j++ {
+				fmt.Printf("%4d", i*j)
+			}
+		}
+
+	case "/":
+		for i := 0; i <= num; i++ {
+			fmt.Printf("\n%d", i)
+			for j := 0; j <= num; j++ {
+				if i == 0 {
+					fmt.Printf("%4d", 0)
+				} else {
+					fmt.Printf("%4d", i*j)
+				}
+			}
+		}
+
+	case "+":
+		for i := 0; i <= num; i++ {
+			fmt.Printf("\n%d", i)
+			for j := 0; j <= num; j++ {
+				fmt.Printf("%4d", i+j)
+			}
+		}
+
+	case "-":
+		for i := 0; i <= num; i++ {
+			fmt.Printf("\n%d", i)
+			for j := 0; j <= num; j++ {
+				fmt.Printf("%4d", i-j)
+			}
+		}
+	case "%":
+		for i := 0; i <= num; i++ {
+			fmt.Printf("\n%d", i)
+			for j := 0; j <= num; j++ {
+				if i == 0 {
+					fmt.Printf("%4d", 0)
+				} else {
+					fmt.Printf("%4d", j%i)
+				}
+
+			}
+		}
+	default:
+		fmt.Println("Please enter a valid opertor")
+	}
 }

@@ -26,11 +26,12 @@ func main() {
 	// NOTE : You should remove all the initializers below
 	//        first. Then use iota to fix it.
 	const (
-		Winter = 12
-		Spring = 3
-		Summer = 6
-		Fall   = 9
+		Spring = 3 + 3*iota
+		Summer
+		Fall
+		Winter
 	)
 
 	fmt.Println(Winter, Spring, Summer, Fall)
+	fmt.Println("true" == "true")
 }

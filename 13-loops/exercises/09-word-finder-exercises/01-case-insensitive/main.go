@@ -8,6 +8,14 @@
 
 package main
 
+import (
+	"fmt"
+	"log"
+	"os"
+	"regexp"
+	"strings"
+)
+
 // ---------------------------------------------------------
 // EXERCISE: Case Insensitive Search
 //
@@ -23,6 +31,31 @@ package main
 //  For all cases above, the program should find
 //  the "lazy" keyword.
 // ---------------------------------------------------------
+var sentence = `Hello, my name is Justin. I like to snowboard, golf, and hike.
+I live in Colorado and my favorite things about Colorado are the mountains and 
+the seasons.`
 
 func main() {
+	reg, err := regexp.Compile("[^a-zA-Z0-9]+")
+	if err != nil {
+		log.Fatal(err)
+	}
+	processedSentence := reg.ReplaceAllString(sentence, " ")
+	fmt.Println(processedSentence)
+	words := strings.Fields(processedSentence)
+	args := os.Args[1:]
+	if len(args) < 1 {
+		fmt.Println("Please enter at lease one word")
+		return
+	}
+
+	for _, q := range args {
+		for i, w := range words {
+			if strings.ToLower(q) == strings.ToLower(w) {
+				fmt.Printf("#%-2d: %s\n", i+1, w)
+				break
+			}
+		}
+	}
+
 }

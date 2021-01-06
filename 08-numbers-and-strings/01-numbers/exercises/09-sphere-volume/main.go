@@ -10,6 +10,9 @@ package main
 
 import (
 	"fmt"
+	"math"
+	"os"
+	"strconv"
 )
 
 // ---------------------------------------------------------
@@ -34,11 +37,16 @@ import (
 // ---------------------------------------------------------
 
 func main() {
-	var radius, vol float64
+	var radius, vol, v2 float64
 
+	radius, _ = strconv.ParseFloat(os.Args[1], 64)
+	vol = (4 * math.Pi * math.Pow(radius, 3)) / 3
+	v2 = (4. / 3.) * math.Pi * (math.Pow(radius, 3))
 	// ADD YOUR CODE HERE
 	// ...
 
 	// DO NOT TOUCH THIS
-	fmt.Printf("radius: %g -> volume: %.2f\n", radius, vol)
+	fmt.Printf("radius: %g -> volume: %.2f or %.2f\n", radius, vol, v2)
+	x := "hétérogénéité"
+	fmt.Println(len(x))
 }

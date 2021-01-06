@@ -10,6 +10,7 @@ package main
 
 import (
 	"fmt"
+	"strings"
 )
 
 // ---------------------------------------------------------
@@ -32,6 +33,9 @@ func main() {
 	// currently it prints 17
 	// it should print 5
 
-	name := "inanç           "
+	name := "lansdale           "
+	name = strings.TrimRight(name, "ale ")
 	fmt.Println(len(name))
+	fmt.Println(name)
+	fmt.Printf("%x\n", 500)
 }

@@ -26,8 +26,9 @@ import "fmt"
 func main() {
 	// DO NOT TOUCH THIS VARIABLES
 	min := int8(127)
-	max := int16(1000)
+	max := int16(255)
 
 	// FIX THE CODE HERE
-	fmt.Println(int8(max) + min)
+	fmt.Println(max + int16(min))
+	fmt.Println(int8(max))
 }

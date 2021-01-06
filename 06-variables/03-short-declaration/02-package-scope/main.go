@@ -25,4 +25,10 @@ var safe = true
 
 func main() {
 	fmt.Println(safe)
+
+	var x bool = true
+	x = false
+
+	fmt.Println(x)
+
 }

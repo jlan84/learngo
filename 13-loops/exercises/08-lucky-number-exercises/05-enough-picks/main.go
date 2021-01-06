@@ -8,6 +8,14 @@
 
 package main
 
+import (
+	"fmt"
+	"math/rand"
+	"os"
+	"strconv"
+	"time"
+)
+
 // ---------------------------------------------------------
 // EXERCISE: Enough Picks
 //
@@ -44,6 +52,45 @@ package main
 //    Then the computer should pick a random number
 //    between 0-15.
 // ---------------------------------------------------------
+const errMsg = `Please enter one positive integer`
 
 func main() {
+	rand.Seed(time.Now().UnixNano())
+	args := os.Args[1:]
+	if len(args) < 1 {
+		fmt.Println(errMsg)
+		return
+	}
+	var (
+		mx      int
+		verbose bool
+	)
+	num, err := strconv.Atoi(args[len(args)-1])
+
+	if num <= 10 {
+		mx = 11
+	} else {
+		mx = num + 1
+	}
+
+	if err != nil || num < 0 {
+		fmt.Println(errMsg)
+		return
+	}
+
+	if args[0] == "-v" {
+		verbose = true
+	}
+
+	for i := 0; i < 5; i++ {
+		n := rand.Intn(mx)
+		if verbose {
+			fmt.Printf("%4d", n)
+		}
+		if n == num {
+			fmt.Println("\nYou win :)")
+			return
+		}
+	}
+	fmt.Println("\nYou Lose :(")
 }

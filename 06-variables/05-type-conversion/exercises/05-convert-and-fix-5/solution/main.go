@@ -15,6 +15,7 @@ func main() {
 	max := int16(1000)
 
 	fmt.Println(max + int16(min))
+	fmt.Println(int8(max))
 
 	// EXPLANATION
 	//

@@ -8,6 +8,11 @@
 
 package main
 
+import (
+	"bytes"
+	"fmt"
+)
+
 // ---------------------------------------------------------
 // EXERCISE: Append
 //
@@ -23,7 +28,9 @@ package main
 
 func main() {
 	// 1. uncomment the code below
-	// png, header := []byte{'P', 'N', 'G'}, []byte{}
+	png, header := []byte{'P', 'N', 'G'}, []byte{}
+	header = append(header, 'P', 'N', 'G')
+	fmt.Printf("%t\n", bytes.Equal(header, png))
 
 	// 2. append elements to header to make it equal with the png slice
 

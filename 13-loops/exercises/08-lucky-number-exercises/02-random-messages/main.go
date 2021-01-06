@@ -8,6 +8,17 @@
 
 package main
 
+import (
+	"fmt"
+	"math/rand"
+	"os"
+	"strconv"
+	"time"
+)
+
+const errMsg = `Please enter a positive integer for a guess and a difficulty
+level from 1 - 10, 10 being the easiest`
+
 // ---------------------------------------------------------
 // EXERCISE: Random Messages
 //
@@ -35,4 +46,37 @@ package main
 // ---------------------------------------------------------
 
 func main() {
+	rand.Seed(time.Now().UnixNano())
+	args := os.Args[1:]
+	if len(args) != 2 {
+		fmt.Println(errMsg)
+		return
+	}
+	guess, err1 := strconv.Atoi(args[0])
+	level, err2 := strconv.Atoi(args[1])
+	if err1 != nil || err2 != nil {
+		fmt.Println(errMsg)
+		return
+	}
+
+	fmt.Print("Numbers:")
+	for i := 0; i < level; i++ {
+		n := rand.Intn(guess + 1)
+		fmt.Printf("%4d ", n)
+		if guess != n {
+			continue
+		}
+		if guess == n {
+			switch msg := rand.Intn(3); msg {
+			case 0:
+				fmt.Println("\nYou won the game!")
+			case 1:
+				fmt.Println("\nYou complete me!")
+			case 2:
+				fmt.Println("\nIf I wasn't a computer I'd give you a huuuuuge....")
+			}
+			return
+		}
+	}
+	fmt.Println("\nYou lost :(")
 }

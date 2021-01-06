@@ -44,7 +44,8 @@ import "fmt"
 
 func main() {
 	// EXAMPLES:
-
+	var hi bool
+	fmt.Println(hi)
 	// I'm going to print 10 in hexadecimal
 	fmt.Println(0xa)
 
@@ -66,4 +67,10 @@ func main() {
 
 	// COMMENT-OUT ALL THE CODE ABOVE, THEN,
 	// ADD YOUR OWN SOLUTIONS BELOW
+	fmt.Println(0x0, 0x1, 0x2, 0x3, 0x4, 0x5, 0x6, 0x7, 0x8, 0x9)
+	fmt.Println(0xa, 0xb, 0xc, 0xd, 0xe, 0xf)
+	fmt.Println(0x11)
+	fmt.Println(0x19)
+	fmt.Println(0x32)
+	fmt.Println(0x64)
 }
