@@ -95,7 +95,7 @@ func main() {
 			for i := 0; i < 3; i++ {
 				for line := range alarm[0] {
 					for char := range alarm {
-						fmt.Print(alarm[char][line])
+						fmt.Print(alarm[char][line], " ")
 					}
 					fmt.Print("\n")
 				}

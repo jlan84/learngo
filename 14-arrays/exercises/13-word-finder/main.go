@@ -66,7 +66,7 @@ func main() {
 		return
 	}
 	basicWords := [...]string{"and", "or", "was", "the", "since", "very"}
-	words := strings.Fields
+	words := strings.Fields(strings.ToLower(corpus))
 mainLoop:
 	for _, v := range args {
 		for _, v2 := range basicWords {
@@ -74,9 +74,12 @@ mainLoop:
 				continue mainLoop
 			}
 		}
-		idx := strings.Index(corpus, strings.ToLower(v))
-		if idx != -1 {
-			fmt.Printf("#%-3d: %q\n", idx, v)
+		for i, word := range words {
+			if word == v {
+				fmt.Printf("#%d: %s\n", i, v)
+
+			}
 		}
+
 	}
 }

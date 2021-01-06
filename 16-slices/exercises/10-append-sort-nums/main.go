@@ -51,10 +51,11 @@ import (
 
 func main() {
 	args := os.Args[1:]
-	if len(args) < 1 {
-		fmt.Println("Please enter at least one number")
+	if len(args) < 2 {
+		fmt.Println("Please enter at least 2 numbers")
 		return
 	}
+
 	var nums []int
 	for _, v := range args {
 		n, err := strconv.Atoi(v)
@@ -65,5 +66,4 @@ func main() {
 	}
 	sort.Ints(nums)
 	fmt.Println(nums)
-
 }

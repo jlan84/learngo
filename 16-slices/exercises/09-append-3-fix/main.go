@@ -27,7 +27,6 @@ import "fmt"
 
 func main() {
 	toppings := []string{"black olives", "green peppers"}
-	pizza := toppings
-	pizza = append(toppings, "onions", "extra cheese")
+	pizza := append(toppings, "onions", "extra cheese")
 	fmt.Printf("pizza       : %s\n", pizza)
 }

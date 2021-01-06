@@ -46,10 +46,11 @@ func main() {
 	sort.Strings(namesB)
 
 	var not string
+
 	for i, v := range namesA {
 		if v != namesB[i] {
-			not = "not "
+			not = "not"
 		}
 	}
-	fmt.Printf("The strings are %sequal\n", not)
+	fmt.Printf("The strings are %s equal\n", not)
 }

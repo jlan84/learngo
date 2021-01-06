@@ -19,6 +19,8 @@ func main() {
 		alives    [4]bool    // Up/Down status of four different web servers
 		zero      [0]byte    // A byte array that doesn't occupy memory space
 	)
+	names2 := [...]string{"Justin", "Seb"}
+	fmt.Println(names2)
 
 	// 1. Declare and print the arrays with their types.
 	fmt.Printf("names    : %#v\n", names)

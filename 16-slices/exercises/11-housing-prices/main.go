@@ -32,9 +32,9 @@ import (
 //
 //  3. Parse the data
 //
-//     1. Separate it into rows by using the newline character ("\n")
+//     1. Separate it into cols by using the newline character ("\n")
 //
-//     2. For each row, separate it by using the separator (",")
+//     2. For each col, separate it by using the separator (",")
 //
 //
 //  4. Load the data into distinct slices
@@ -53,7 +53,7 @@ import (
 //     2. Print each column 15 character wide ("%-15s")
 //
 //
-//  6. Print the rows from the slices that you've created, line by line
+//  6. Print the cols from the slices that you've created, line by line
 //
 //
 // EXPECTED OUTPUT
@@ -83,33 +83,39 @@ Istanbul,500,10,5,1000000`
 		separator = ","
 	)
 	var (
-		head, rows, location     []string
+		loc                      []string
 		size, beds, baths, price []int
 	)
 
-	head = strings.Split(header, separator)
-	rows = strings.Split(data, "\n")
-	for _, v := range rows {
-		cols := strings.Split(v, separator)
-		location = append(location, cols[0])
-		n, _ := strconv.Atoi(cols[1])
+	rows := strings.Split(data, "\n")
+
+	for _, row := range rows {
+		col := strings.Split(row, ",")
+
+		loc = append(loc, col[0])
+
+		n, _ := strconv.Atoi(col[1])
 		size = append(size, n)
-		n, _ = strconv.Atoi(cols[2])
+
+		n, _ = strconv.Atoi(col[2])
 		beds = append(beds, n)
-		n, _ = strconv.Atoi(cols[3])
+
+		n, _ = strconv.Atoi(col[3])
 		baths = append(baths, n)
-		n, _ = strconv.Atoi(cols[4])
+
+		n, _ = strconv.Atoi(col[4])
 		price = append(price, n)
 
 	}
 
-	for _, v := range head {
+	for _, v := range strings.Split(header, ",") {
 		fmt.Printf("%-15s", v)
 	}
-	fmt.Print("\n==================================================================\n")
-	for i := range location {
-		fmt.Printf("%-15s%-15d%-15d%-15d%-15d\n", location[i], size[i], beds[i],
-			baths[i], price[i])
-	}
+	fmt.Println("\n", strings.Repeat("=", 75))
 
+	for i, _ := range loc {
+		fmt.Printf("%-15s%-15d%-15d%-15d%-15d", loc[i], size[i], beds[i], baths[i], price[i])
+		fmt.Println()
+	}
+	fmt.Println(rows)
 }

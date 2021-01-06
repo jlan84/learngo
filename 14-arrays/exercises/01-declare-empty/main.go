@@ -69,6 +69,8 @@ func main() {
 		alives    [4]bool
 		zero      [0]byte
 	)
+	names2 := [...]string{"justin", "seb"}
+	fmt.Println(names2)
 
 	// 1. Declare and print the arrays with their types.
 	fmt.Printf("names    : %#v\n", names)

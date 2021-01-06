@@ -79,29 +79,29 @@ Istanbul,500,10,5,1000000`
 	fmt.Print("\n", strings.Repeat("=", 75), "\n")
 
 	sum := 0.
+
 	for _, v := range size {
 		sum += float64(v)
 	}
-	avgs = append(avgs, sum/4.)
-	sum = 0.
+	avgs = append(avgs, sum/float64(len(size)))
 
+	sum = 0.
 	for _, v := range beds {
 		sum += float64(v)
 	}
-	avgs = append(avgs, sum/4.)
-	sum = 0.
+	avgs = append(avgs, sum/float64(len(beds)))
 
+	sum = 0.
 	for _, v := range baths {
 		sum += float64(v)
 	}
-	avgs = append(avgs, sum/4.)
-	sum = 0.
+	avgs = append(avgs, sum/float64(len(baths)))
 
+	sum = 0.
 	for _, v := range price {
 		sum += float64(v)
 	}
-	avgs = append(avgs, sum/4.)
-	sum = 0.
+	avgs = append(avgs, sum/float64(len(price)))
 
 	fmt.Print(strings.Repeat(" ", 15))
 	for _, v := range avgs {
