@@ -105,6 +105,6 @@ Istanbul,500,10,5,1000000`
 
 	fmt.Print(strings.Repeat(" ", 15))
 	for _, v := range avgs {
-		fmt.Printf("%-15.3f", v)
+		fmt.Printf("%-15.4f", v)
 	}
 }
