@@ -8,6 +8,8 @@
 
 package main
 
+import "fmt"
+
 // ---------------------------------------------------------
 // EXERCISE: Observe the capacity growth
 //
@@ -39,4 +41,19 @@ package main
 //
 // ---------------------------------------------------------
 
-func main() {}
+func main() {
+	const total = 10e6
+	slc, currentCap := []int(nil), 0.
+
+	for i := 0; i <= total; i++ {
+		c := float64(cap(slc))
+		growth := c / currentCap
+		if c == 0 || currentCap != c {
+			fmt.Printf("len: %-10d cap: %-10d growth: %.2f\n", len(slc), cap(slc),
+				growth)
+		}
+		currentCap = c
+		slc = append(slc, 1)
+	}
+
+}

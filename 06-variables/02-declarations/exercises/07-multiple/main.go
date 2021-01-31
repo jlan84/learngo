@@ -25,10 +25,3 @@ package main
 // EXPECTED OUTPUT
 //  false 0
 // ---------------------------------------------------------
-
-func main() {
-	var (
-	  ?
-	)
-	fmt.Println(active, delta)
-}

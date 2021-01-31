@@ -29,16 +29,3 @@ package main
 //  Find more formulas here and calculate them in new programs
 //  https://www.mathsisfun.com/area.html
 // ---------------------------------------------------------
-
-func main() {
-	// UNCOMMENT THE CODE BELOW:
-
-	var (
-		perimeter     int
-		width, height = 5, 6
-	)
-
-	// USE THE VARIABLES ABOVE WHEN CALCULATING YOUR RESULT
-
-	// ADD YOUR CODE BELOW
-}
