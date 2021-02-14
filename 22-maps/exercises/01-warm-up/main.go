@@ -8,6 +8,8 @@
 
 package main
 
+import "fmt"
+
 // ---------------------------------------------------------
 // EXERCISE: Warm-up
 //
@@ -25,22 +27,13 @@ package main
 // ---------------------------------------------------------
 
 func main() {
-	// Hint: Store phone numbers as text
 
-	// #1
-	// Key        : Last name
-	// Element    : Phone number
+	phoneNumbers := map[string]int{
+		"Justin": 5059473933,
+		"Gabby":  7203512309,
+		"Mom":    5054865098,
+	}
 
-	// #2
-	// Key        : Product ID
-	// Element    : Available / Unavailable
+	fmt.Println(phoneNumbers)
 
-	// #3
-	// Key        : Last name
-	// Element    : Phone numbers
-
-	// #4
-	// Key        : Customer ID
-	// Element Key:
-	//   Key: Product ID Element: Quantity
 }

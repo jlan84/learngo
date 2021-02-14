@@ -8,6 +8,13 @@
 
 package main
 
+import (
+	"bufio"
+	"fmt"
+	"os"
+	"strings"
+)
+
 // ---------------------------------------------------------
 // EXERCISE: Quit
 //
@@ -37,4 +44,17 @@ package main
 // ---------------------------------------------------------
 
 func main() {
+	in := bufio.NewScanner(os.Stdin)
+	in.Split(bufio.ScanWords)
+	wordDic := make(map[string]bool)
+
+	for in.Scan() {
+		word := strings.ToLower(in.Text())
+
+		if wordDic[word] {
+			fmt.Println("TWICE!")
+			return
+		}
+		wordDic[word] = true
+	}
 }

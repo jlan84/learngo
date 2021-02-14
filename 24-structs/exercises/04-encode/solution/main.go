@@ -114,7 +114,7 @@ func main() {
 					jsonGame{g.id, g.name, g.genre, g.price})
 			}
 
-			out, err := json.MarshalIndent(encodable, "", "\t")
+			out, err := json.MarshalIndent(encodable, "", "")
 			if err != nil {
 				fmt.Println("Sorry:", err)
 				continue

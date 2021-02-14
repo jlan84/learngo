@@ -88,20 +88,12 @@ func main() {
 		// calculate the next ball position
 		px += vx
 		py += vy
-
 		// when the ball hits a border reverse its direction
 		if px <= 0 || px >= width-1 {
 			vx *= -1
 		}
 		if py <= 0 || py >= height-1 {
 			vy *= -1
-		}
-
-		// remove the previous ball
-		for y := range board[0] {
-			for x := range board {
-				board[x][y] = false
-			}
 		}
 
 		// put the new ball
@@ -125,6 +117,8 @@ func main() {
 		// print the buffer
 		screen.MoveTopLeft()
 		fmt.Print(string(buf))
+		// remove previous ball
+		board[px][py] = false
 
 		// slow down the animation
 		time.Sleep(speed)

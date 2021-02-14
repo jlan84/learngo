@@ -8,6 +8,11 @@
 
 package main
 
+import (
+	"fmt"
+	"os"
+)
+
 // ---------------------------------------------------------
 // EXERCISE: Students
 //
@@ -73,4 +78,31 @@ func main() {
 	// slytherin    scorpius
 	// bobo         wizardry
 	// bobo         unwanted
+
+	houses := map[string][]string{
+		"gryffindor": {"weasley", "hagrid", "dumbledore", "lupin"},
+		"hugglepuf":  {"wenlock", "scamander", "helga", "diggory"},
+		"ravenclaw":  {"fllitwick", "bagnold", "wildsmith", "montmonrency"},
+		"slytherin":  {"horace", "nigellus", "higgs", "scorpius"},
+		"bobo":       {"wizardry", "unwanted"},
+	}
+
+	delete(houses, "bobo")
+	args := os.Args[1:]
+	if len(args) != 1 {
+		fmt.Println("Please enter a hogwarts house")
+		return
+	}
+
+	v, exists := houses[args[0]]
+	if exists {
+		fmt.Printf("~~~~ %s students~~~~\n", args[0])
+		for _, val := range v {
+			fmt.Printf("\t+ %s\n", val)
+		}
+		return
+	}
+
+	fmt.Printf("Sorry I don't know anything about %q\n", args[0])
+
 }

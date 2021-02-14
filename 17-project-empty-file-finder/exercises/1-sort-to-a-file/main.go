@@ -8,6 +8,13 @@
 
 package main
 
+import (
+	"fmt"
+	"io/ioutil"
+	"os"
+	"sort"
+)
+
 // ---------------------------------------------------------
 // EXERCISE: Sort and write items to a file
 //
@@ -33,19 +40,37 @@ package main
 //
 // HINTS
 //
-//   + REMEMBER: os.Args is a []string
+//   + REMEMBER: os.Args is a []dataing
 //
-//   + String slices are sortable using `sort.Strings`
+//   + dataing slices are sortable using `sort.dataings`
 //
 //   + Use ioutil.WriteFile to write to a file.
 //
-//   + But you need to convert []string to []byte to be able to
+//   + But you need to convert []dataing to []byte to be able to
 //     write it to a file using the ioutil.WriteFile.
 //
 //   + To do that, create a new []byte and append the elements of your
-//     []string.
+//     []dataing.
 //
 // ---------------------------------------------------------
 
 func main() {
+	args := os.Args[1:]
+	if len(args) < 1 {
+		fmt.Println("Please supply a dataing to write to a file")
+	}
+	sort.Strings(args)
+	var data []byte
+
+	for _, arg := range args {
+		data = append(data, arg...)
+		data = append(data, '\n')
+	}
+
+	err := ioutil.WriteFile("out.txt", data, 0644)
+	if err != nil {
+		fmt.Println(err)
+		return
+	}
+
 }

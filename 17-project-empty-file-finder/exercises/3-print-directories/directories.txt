@@ -1,0 +1,10 @@
+/Users/justin.lansdalepropx.com/go/src/github.com/jlan84/learngo/17-project-empty-file-finder/
+	01-fetch-the-files/
+	02-write-to-a-file/
+	03-optimize/
+	exercises/
+/Users/justin.lansdalepropx.com/go/src/github.com/jlan84/learngo/17-project-empty-file-finder/
+	01-fetch-the-files/
+	02-write-to-a-file/
+	03-optimize/
+	exercises/

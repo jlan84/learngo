@@ -8,6 +8,11 @@
 
 package main
 
+import (
+	"fmt"
+	"strings"
+)
+
 // ---------------------------------------------------------
 // EXERCISE: Print the runes
 //
@@ -33,4 +38,20 @@ package main
 
 func main() {
 	const word = "console"
+
+	fmt.Printf("%-10s%-10s%-10s%s\n%s\n", "Letter", "Decimal", "Hex", "Binary",
+		strings.Repeat("-", 50))
+
+	for _, l := range word {
+		fmt.Printf("%-10c%-10d%-10x%b\n", l, l, l, l)
+	}
+
+	bslice := string([]byte{'c', 'o', 'n', 's', 'o', 'l', 'e'})
+	fmt.Println(bslice)
+
+	bslice = string([]byte{99, 111, 110, 115, 111, 108, 101})
+	fmt.Println(bslice)
+
+	bslice = string([]byte{0x63, 0x6f, 0x6e, 0x73, 0x6f, 0x6c, 0x65})
+	fmt.Println(bslice)
 }

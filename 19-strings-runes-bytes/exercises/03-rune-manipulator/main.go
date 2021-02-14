@@ -8,6 +8,12 @@
 
 package main
 
+import (
+	"fmt"
+	"strings"
+	"unicode/utf8"
+)
+
 // ---------------------------------------------------------
 // EXERCISE: Rune Manipulator
 //
@@ -18,15 +24,23 @@ package main
 // ---------------------------------------------------------
 
 func main() {
-	strings := []string{
+	words := []string{
 		"cool",
 		"güzel",
 		"jīntiān",
 		"今天",
 		"read 🤓",
 	}
+	fmt.Printf("%-15s%-15s%-15s\n%s\n", "Word", "byte length", "rune length",
+		strings.Repeat("-", 50))
 
-	_ = strings
+	for _, word := range words {
+		fmt.Printf("%-15s%-15d%-15d\n", word, len(word), utf8.RuneCountInString(word))
+		for _, l := range word {
+			fmt.Printf("bytes: % x ", l)
+			fmt.Printf("rune: %x ", l)
+		}
+	}
 
 	// Print the byte and rune length of the strings
 	// Hint: Use len and utf8.RuneCountInString

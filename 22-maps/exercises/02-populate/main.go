@@ -8,6 +8,8 @@
 
 package main
 
+import "fmt"
+
 // ---------------------------------------------------------
 // EXERCISE: Populate and Lookup
 //
@@ -70,4 +72,10 @@ package main
 // ---------------------------------------------------------
 
 func main() {
+	phoneNumbers := map[string][]string{
+		"Justin": {"505-947-3933", "419-233-8125"},
+		"Gabby":  {"720-351-2309", "212-899-8551"},
+	}
+
+	fmt.Println(phoneNumbers["Gabby"][1])
 }

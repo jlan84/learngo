@@ -35,6 +35,7 @@ func main() {
 
 	// 2nd way: let's do it using the utf8 package's DecodeRune function
 	_, size = utf8.DecodeRune(word)
+	fmt.Println(size)
 
 	// overwrite the current bytes with the new uppercased bytes
 	copy(word[:size], bytes.ToUpper(word[:size]))

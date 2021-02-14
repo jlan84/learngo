@@ -25,7 +25,7 @@ func main() {
 		speed     = time.Second / 20
 
 		// initial velocities
-		ivx, ivy = 5, 2
+		ivx, ivy = 1, 1
 	)
 
 	var (
