@@ -8,7 +8,10 @@
 
 package main
 
-import "fmt"
+import (
+	"encoding/json"
+	"fmt"
+)
 
 const data = `
 [
@@ -43,11 +46,26 @@ type game struct {
 	genre string
 }
 
+type export struct {
+	Id    int    `json:"id"`
+	Name  string `json:"name"`
+	Price int    `json:"price"`
+	Genre string `json:"genre"`
+}
+
 func load() (games []game) {
-	games = addGame(games, newGame(1, 50, "god of war", "action adventure"))
-	games = addGame(games, newGame(2, 40, "x-com 2", "strategy"))
-	games = addGame(games, newGame(3, 20, "minecraft", "sandbox"))
-	return
+	var decoded []export
+	dataBytes := []byte(data)
+	if err := json.Unmarshal(dataBytes, &decoded); err != nil {
+		fmt.Println("There was an error loading")
+		return
+	}
+
+	for _, g := range decoded {
+		games = append(games, game{item: item{g.Id, g.Name, g.Price}, genre: g.Genre})
+	}
+	return games
+
 }
 
 func addGame(games []game, g game) []game {

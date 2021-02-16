@@ -64,16 +64,6 @@ import (
 )
 
 func main() {
-	type item struct {
-		id    int
-		name  string
-		price int
-	}
-
-	type game struct {
-		item
-		genre string
-	}
 
 	// load()
 	games := []game{
@@ -85,11 +75,12 @@ func main() {
 		{item: item{id: 3, name: "minecraft", price: 20}, genre: "sandbox"},
 	}
 
-	// indexByID()
+	g := newGame(4, 50, "darkest dungeon", "turn-based rpg")
+	games = addGame(g, games)
+	games = load(5, 60, "DOS2", "turn based rpg", games)
+
 	byID := make(map[int]game)
-	for _, g := range games {
-		byID[g.id] = g
-	}
+	byID = indexByID(games)
 
 	fmt.Printf("Inanc's game store has %d games.\n", len(games))
 
@@ -121,8 +112,7 @@ func main() {
 		case "list":
 			for _, g := range games {
 				// printGame()
-				fmt.Printf("#%d: %-15q %-20s $%d\n",
-					g.id, g.name, "("+g.genre+")", g.price)
+				printGames(g)
 			}
 
 		case "id":
@@ -144,8 +134,7 @@ func main() {
 			}
 
 			// printGame()
-			fmt.Printf("#%d: %-15q %-20s $%d\n",
-				g.id, g.name, "("+g.genre+")", g.price)
+			printGames(g)
 		}
 	}
 }

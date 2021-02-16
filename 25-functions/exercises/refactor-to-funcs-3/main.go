@@ -52,6 +52,7 @@ func main() {
   > list   : lists all the games
   > id N   : queries a game by id
   > quit   : quits
+  > save   : saves and quits
 
 `)
 

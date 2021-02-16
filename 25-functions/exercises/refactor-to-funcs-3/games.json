@@ -1,0 +1,20 @@
+[
+	{
+		"Id": 1,
+		"Name": "god of war",
+		"Price": 50,
+		"Genre": "action adventure"
+	},
+	{
+		"Id": 2,
+		"Name": "x-com 2",
+		"Price": 40,
+		"Genre": "strategy"
+	},
+	{
+		"Id": 3,
+		"Name": "minecraft",
+		"Price": 20,
+		"Genre": "sandbox"
+	}
+]

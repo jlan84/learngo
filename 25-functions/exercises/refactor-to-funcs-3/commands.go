@@ -9,7 +9,9 @@
 package main
 
 import (
+	"encoding/json"
 	"fmt"
+	"io/ioutil"
 	"strconv"
 	"strings"
 )
@@ -31,6 +33,8 @@ func runCmd(input string, games []game, byID map[int]game) bool {
 
 	case "id":
 		return cmdByID(cmd, games, byID)
+	case "save":
+		return saveCmd(games)
 	}
 	return true
 }
@@ -68,4 +72,19 @@ func cmdByID(cmd []string, games []game, byID map[int]game) bool {
 	printGame(g)
 
 	return true
+}
+
+func saveCmd(games []game) bool {
+	var newGames []export
+	for _, g := range games {
+		newGames = append(newGames, export{g.id, g.name, g.price, g.genre})
+	}
+	fmt.Println("Saving games and quitting")
+	file, err := json.MarshalIndent(newGames, "", "\t")
+	if err != nil {
+		fmt.Println(err)
+		return false
+	}
+	err = ioutil.WriteFile("games.json", file, 0644)
+	return false
 }
